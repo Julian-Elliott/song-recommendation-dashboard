@@ -3,7 +3,7 @@
 # Spotify Tracks Dataset Analysis
 ## Overview
 
-The objective of this project is to predict song recommendations using features within the [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-datase), such as danceability, energy, loudness, instrumentalness, and liveness. We employ a nearest neighbour machine learning approach to suggest songs that are similar in musical characteristics, providing users with tailored recommendations based on their preferences.
+The objective of this project is to predict song recommendations using features within the [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset), such as danceability, energy, loudness, instrumentalness, and liveness. We employ a nearest neighbour machine learning approach to suggest songs that are similar in musical characteristics, providing users with tailored recommendations based on their preferences.
 
 Our dataset contains 89,741 unique tracks, each with detailed information including:
 - Track name, artist, and album

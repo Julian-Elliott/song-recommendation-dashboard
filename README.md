@@ -3,16 +3,16 @@
 # Spotify Tracks Dataset Analysis
 ## Overview
 
-This project provides a comprehensive analysis of the [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-datase) to uncover the primary factors influencing song popularity and musical characteristics. Leveraging Python and a suite of data analysis and visualisation libraries, the project investigates how variables such as audio features (danceability, energy, valence, etc.), artist, and genre impact a track’s popularity on Spotify. The analysis is designed to offer actionable insights for music industry professionals, artists, and enthusiasts seeking to understand trends and drivers of success in the music streaming landscape.
+The objective of this project is to predict song recommendations using features within the [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-datase), such as danceability, energy, loudness, instrumentalness, and liveness. We employ a nearest neighbour machine learning approach to suggest songs that are similar in musical characteristics, providing users with tailored recommendations based on their preferences.
 
-The Spotify Tracks Dataset contains detailed information about over 600,000 songs available on Spotify, including:
+Our dataset contains 89,741 unique tracks, each with detailed information including:
 - Track name, artist, and album
 - Popularity score
 - Release date
 - Audio features (danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
 - Genre and playlist information
 
-This rich dataset enables in-depth exploration of the relationships between musical attributes and popularity, supporting data-driven decision making in the music industry.
+By leveraging these features and machine learning techniques, this project aims to deliver accurate and relevant song recommendations, supporting data-driven decision making for music discovery and personalisation.
 
 
 ## Dataset Content

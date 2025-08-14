@@ -1,0 +1,108 @@
+
+# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Spotify Tracks Dataset Analysis
+## Overview
+
+This project provides a comprehensive analysis of the [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-datase) to uncover the primary factors influencing song popularity and musical characteristics. Leveraging Python and a suite of data analysis and visualisation libraries, the project investigates how variables such as audio features (danceability, energy, valence, etc.), artist, and genre impact a track’s popularity on Spotify. The analysis is designed to offer actionable insights for music industry professionals, artists, and enthusiasts seeking to understand trends and drivers of success in the music streaming landscape.
+
+The Spotify Tracks Dataset contains detailed information about over 600,000 songs available on Spotify, including:
+- Track name, artist, and album
+- Popularity score
+- Release date
+- Audio features (danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
+- Genre and playlist information
+
+This rich dataset enables in-depth exploration of the relationships between musical attributes and popularity, supporting data-driven decision making in the music industry.
+
+
+## Dataset Content
+* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+
+
+## Business Requirements
+* Describe your business requirements
+
+
+## Hypothesis and how to validate?
+* List here your project hypothesis(es) and how you envision validating it (them) 
+
+## Project Plan
+* Outline the high-level steps taken for the analysis.
+* How was the data managed throughout the collection, processing, analysis and interpretation steps?
+* Why did you choose the research methodologies you used?
+
+## The rationale to map the business requirements to the Data Visualisations
+* List your business requirements and a rationale to map them to the Data Visualisations
+
+## Analysis techniques used
+* List the data analysis methods used and explain limitations or alternative approaches.
+* How did you structure the data analysis techniques. Justify your response.
+* Did the data limit you, and did you use an alternative approach to meet these challenges?
+* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+
+
+> **Note:**
+> 
+> The Spotify Tracks Dataset may contain explicit songs or tracks by artists who have been cancelled or are considered controversial. Care should be taken when recommending such songs, especially as minors or sensitive users could use this analysis or any resulting dashboard. It is important to consider filtering or flagging explicit or potentially inappropriate content in any recommendation system built from this dataset.
+
+## Ethical considerations
+
+- The Spotify Tracks Dataset may include explicit content or tracks by controversial/cancelled artists. Care must be taken to avoid recommending such songs to minors or sensitive users. Implementing content filters or explicit content warnings is strongly advised.
+- Data privacy is not a direct concern as the dataset contains no personal user information, but ethical use of the data and respect for copyright and licensing should be maintained.
+- Bias may exist in the dataset, such as overrepresentation of certain genres, artists, or regions, which could affect the fairness of recommendations. Regularly review and, if possible, mitigate these biases in your analysis and recommendation algorithms.
+- Consider the societal impact of music recommendations, especially regarding exposure to explicit or potentially harmful content.
+
+## Dashboard Design
+* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
+* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
+* How were data insights communicated to technical and non-technical audiences?
+* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+
+## Unfixed Bugs
+* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
+* Did you recognise gaps in your knowledge, and how did you address them?
+* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
+
+## Development Roadmap
+* What challenges did you face, and what strategies were used to overcome these challenges?
+* What new skills or tools do you plan to learn next based on your project experience? 
+
+## Deployment
+### Heroku
+
+* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
+* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
+* The project was deployed to Heroku using the following steps.
+
+1. Log in to Heroku and create an App
+2. From the Deploy tab, select GitHub as the deployment method.
+3. Select your repository name and click Search. Once it is found, click Connect.
+4. Select the branch you want to deploy, then click Deploy Branch.
+5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
+6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+
+
+## Main Data Analysis Libraries
+* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+
+
+## Credits 
+
+* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
+* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+
+### Content 
+
+- The text for the Home page was taken from Wikipedia Article A
+- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
+- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+
+### Media
+
+- The photos used on the home and sign-up page are from This Open-Source site
+- The images used for the gallery page were taken from this other open-source site
+
+
+
+## Acknowledgements (optional)
+* Thank the people who provided support through this project.

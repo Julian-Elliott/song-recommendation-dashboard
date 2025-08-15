@@ -33,9 +33,7 @@ By leveraging these features and machine learning techniques, this project aims 
   - **Audio Feature Correlations:**  
     Are there significant correlations between audio features?  
     *Tested using correlation matrices and significance testing.*
-  - **Content-Based Similarity Assumptions:**  
-    Do songs with similar audio features receive similar ratings/preferences?  
-    *Tested using similarity metrics and correlation with user preferences.*
+
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.

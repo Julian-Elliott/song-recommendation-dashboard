@@ -10,6 +10,12 @@ ipykernel>=6.0.0
 matplotlib>=3.5.0
 seaborn>=0.11.0
 plotly>=5.0.0
+squarify>=0.4.3
 
 # Development and utilities
 ipywidgets>=8.0.0
+
+# For Spotify API integration and image handling
+requests>=2.31.0
+pillow>=9.0.0
+python-dotenv>=1.0.0

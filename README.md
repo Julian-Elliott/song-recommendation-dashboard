@@ -1,4 +1,3 @@
-
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 # Spotify Tracks Dataset Analysis
 ## Overview
@@ -24,7 +23,17 @@ By leveraging these features and machine learning techniques, this project aims 
 
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+* We formulated and tested several hypotheses to guide our recommendation approach:
+  - **Genre-Based Audio Feature Differences:**  
+    Do audio features differ significantly between genres?  
+    *Tested using ANOVA to compare feature distributions across genres.*
+  - **Popularity vs. Audio Features:**  
+    Do popular songs have different audio characteristics than less popular songs?  
+    *Tested using t-tests and effect size calculations.*
+  - **Audio Feature Correlations:**  
+    Are there significant correlations between audio features?  
+    *Tested using correlation matrices and significance testing.*
+
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
@@ -35,15 +44,16 @@ By leveraging these features and machine learning techniques, this project aims 
 * List your business requirements and a rationale to map them to the Data Visualisations
 
 ## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+
+* **Data Cleaning:**  
+  Before analysis, we cleaned the dataset by removing duplicate tracks, handling missing values, and ensuring that all audio feature columns contained valid numerical data. We also standardised column names and filtered out any records with incomplete or inconsistent information. This step was essential to ensure the accuracy and reliability of our analysis and recommendations.
+
+* **Feature Engineering:**  
+  We created new features and transformed existing ones to improve the performance of our recommendation system. This included combining or modifying audio features, encoding categorical variables, and selecting the most relevant features for analysis. Feature engineering helped us better capture the characteristics of songs and user preferences.
+
+* The method we use to prepare the data (called "standard scaling") does not handle unusual values or imbalances in the data. This means that songs that are very different from most others could affect our results. For this project, we decided not to address this issue, as it is outside the scope of our first version. However, looking into this in the future could help us make even more accurate music recommendations.
 
 
-> **Note:**
-> 
-> The Spotify Tracks Dataset may contain explicit songs or tracks by artists who have been cancelled or are considered controversial. Care should be taken when recommending such songs, especially as minors or sensitive users could use this analysis or any resulting dashboard. It is important to consider filtering or flagging explicit or potentially inappropriate content in any recommendation system built from this dataset.
 
 ## Ethical considerations
 
@@ -51,6 +61,10 @@ By leveraging these features and machine learning techniques, this project aims 
 - Data privacy is not a direct concern as the dataset contains no personal user information, but ethical use of the data and respect for copyright and licensing should be maintained.
 - Bias may exist in the dataset, such as overrepresentation of certain genres, artists, or regions, which could affect the fairness of recommendations. Regularly review and, if possible, mitigate these biases in your analysis and recommendation algorithms.
 - Consider the societal impact of music recommendations, especially regarding exposure to explicit or potentially harmful content.
+
+> **Note:**
+> 
+> The Spotify Tracks Dataset may contain explicit songs or tracks by artists who have been cancelled or are considered controversial. Care should be taken when recommending such songs, especially as minors or sensitive users could use this analysis or any resulting dashboard. It is important to consider filtering or flagging explicit or potentially inappropriate content in any recommendation system built from this dataset.
 
 ## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.

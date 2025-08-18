@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
 <!-- build 20252.25.0514.2217                               -->
-<workbook original-version='18.1' source-build='2025.2.0 (20252.25.0514.2217)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version='18.1' source-build='2025.2.0 (20252.25.0514.2217)' source-platform='mac' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <BasicButtonObject />
+    <BasicButtonObjectTextSupport />
     <IntuitiveSorting />
     <IntuitiveSorting_SP2 />
     <MarkAnimation />
@@ -19,6 +21,7 @@
     <WindowsPersistSimpleIdentifiers />
     <ZoneBackgroundTransparency />
   </document-format-change-manifest>
+  <repository-location id='song-recommendation-dashboard' path='/workbooks' revision='1.0' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -28,16 +31,16 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='recommendation' name='textscan.077y1351vxnciq12ymm1r05axmaw'>
-            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data' filename='recommendation.csv' password='' server='' />
+            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data' filename='recommendation.csv' password='' server='' workgroup-auth-mode='as-is' />
           </named-connection>
           <named-connection caption='spotify_artwork_batch_4500' name='textscan.02au6da0bygmjy1cffr940fuhyxp'>
-            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data/processed' filename='spotify_artwork_batch_9500.csv' password='' server='' />
+            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data/processed' filename='spotify_artwork_batch_9500.csv' password='' server='' workgroup-auth-mode='as-is' />
           </named-connection>
           <named-connection caption='spotify_tracks' name='textscan.1ugvtec0f7wpfq1g5n5eo0u47me4'>
-            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data/processed' filename='spotify_tracks.csv' password='' server='' />
+            <connection class='textscan' directory='/Users/julianelliott/Documents/GitHub/song-recommendation-dashboard/data/processed' filename='spotify_tracks.csv' password='' server='' workgroup-auth-mode='as-is' />
           </named-connection>
           <named-connection caption='knn_recommendations' name='textscan.0wxwl3714qobhq19re4al04rrfsj'>
-            <connection class='textscan' directory='/Users/julianelliott/Downloads' filename='knn_recommendations.csv' password='' server='' />
+            <connection class='textscan' directory='/Users/julianelliott/Downloads' filename='knn_recommendations.csv' password='' server='' workgroup-auth-mode='as-is' />
           </named-connection>
         </named-connections>
         <relation type='collection'>
@@ -1367,6 +1370,11 @@
       <column caption='Valence Scaled' datatype='real' name='[valence_scaled]' role='measure' type='quantitative' />
       <column-instance column='[album_name (spotify_tracks_clean_deduplicated.csv)]' derivation='None' name='[none:album_name (spotify_tracks_clean_deduplicated.csv):nk]' pivot='key' type='nominal' />
       <column-instance column='[artists]' derivation='None' name='[none:artists:nk]' pivot='key' type='nominal' />
+      <group caption='Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))' hidden='true' name='[Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[album_name (spotify_tracks_clean_deduplicated.csv)]' />
+        </groupfilter>
+      </group>
       <group hidden='true' name='[Exclusions (Album Name (Spotify Tracks Clean Deduplicated.Csv),Artists)]' name-style='unqualified' user:auto-column='exclude'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[none:album_name (spotify_tracks_clean_deduplicated.csv):nk]' />
@@ -1374,7 +1382,7 @@
         </groupfilter>
       </group>
       <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
-        <connection access_mode='readonly' author-locale='en_GB' class='hyper' dbname='/var/folders/kx/yqmtnv6921q8lftnxgtk60qm0000gn/T/tableau-temp/#TableauTemp_1s47nav005fni81bz5gck0d61xae.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='08/18/2025 02:27:48 PM' username='tableau_internal_user'>
+        <connection access_mode='readonly' author-locale='en_GB' class='hyper' dbname='/var/folders/kx/yqmtnv6921q8lftnxgtk60qm0000gn/T/tableau-temp/#TableauTemp_1s47nav005fni81bz5gck0d61xae.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
           <relation type='collection'>
             <relation name='knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1' table='[Extract].[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]' type='table' />
             <relation name='spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB' table='[Extract].[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]' type='table' />
@@ -1472,7 +1480,6 @@
               <approx-count>369057</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommended_track_id</remote-name>
@@ -1487,7 +1494,6 @@
               <approx-count>327942</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>match_score</remote-name>
@@ -1501,7 +1507,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>140</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommendation_type</remote-name>
@@ -1516,7 +1521,6 @@
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_name</remote-name>
@@ -1531,7 +1535,6 @@
               <approx-count>283971</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_artists</remote-name>
@@ -1546,7 +1549,6 @@
               <approx-count>86612</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_album</remote-name>
@@ -1561,7 +1563,6 @@
               <approx-count>151458</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_popularity</remote-name>
@@ -1575,7 +1576,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>113</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommended_track_name</remote-name>
@@ -1590,7 +1590,6 @@
               <approx-count>253147</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommended_track_artists</remote-name>
@@ -1605,7 +1604,6 @@
               <approx-count>79557</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommended_track_album</remote-name>
@@ -1620,7 +1618,6 @@
               <approx-count>140728</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>recommended_track_popularity</remote-name>
@@ -1634,7 +1631,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>114</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>same_album</remote-name>
@@ -1648,7 +1644,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>euclidean_distance</remote-name>
@@ -1662,7 +1657,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>67904</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[knn_recommendations_combined.csv_147560A1D09747BFABB5CE7BA7837CC1]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_id</remote-name>
@@ -1677,7 +1671,6 @@
               <approx-count>8376</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_name</remote-name>
@@ -1692,7 +1685,6 @@
               <approx-count>4208</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>artist_name</remote-name>
@@ -1707,7 +1699,6 @@
               <approx-count>1907</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_name</remote-name>
@@ -1722,7 +1713,6 @@
               <approx-count>2886</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_id</remote-name>
@@ -1737,7 +1727,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>release_date</remote-name>
@@ -1751,7 +1740,6 @@
               <aggregation>Year</aggregation>
               <approx-count>1662</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>popularity</remote-name>
@@ -1765,7 +1753,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>97</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>duration_ms</remote-name>
@@ -1779,7 +1766,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>4121</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_images</remote-name>
@@ -1794,7 +1780,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_image_url</remote-name>
@@ -1809,7 +1794,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>artist_ids</remote-name>
@@ -1824,7 +1808,6 @@
               <approx-count>1907</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>explicit</remote-name>
@@ -1838,7 +1821,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>preview_url</remote-name>
@@ -1853,7 +1835,6 @@
               <approx-count>1</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_A14CDEA6ACC140E6BBD0E722BDD269BB]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_id</remote-name>
@@ -1868,7 +1849,6 @@
               <approx-count>89740</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>artists</remote-name>
@@ -1883,7 +1863,6 @@
               <approx-count>16449</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_name</remote-name>
@@ -1898,7 +1877,6 @@
               <approx-count>27149</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_name</remote-name>
@@ -1913,7 +1891,6 @@
               <approx-count>61783</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>popularity</remote-name>
@@ -1927,7 +1904,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>122</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>duration_ms</remote-name>
@@ -1941,7 +1917,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>39887</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>explicit</remote-name>
@@ -1955,7 +1930,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>danceability</remote-name>
@@ -1969,7 +1943,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>2693</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>energy</remote-name>
@@ -1983,7 +1956,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3450</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>key</remote-name>
@@ -1997,7 +1969,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>12</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>loudness</remote-name>
@@ -2011,7 +1982,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>23969</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>mode</remote-name>
@@ -2025,7 +1995,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>speechiness</remote-name>
@@ -2039,7 +2008,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3228</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>acousticness</remote-name>
@@ -2053,7 +2021,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>8117</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>instrumentalness</remote-name>
@@ -2067,7 +2034,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>9262</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>liveness</remote-name>
@@ -2081,7 +2047,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3361</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>valence</remote-name>
@@ -2095,7 +2060,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>4249</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>tempo</remote-name>
@@ -2109,7 +2073,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>36303</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>time_signature</remote-name>
@@ -2123,7 +2086,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>5</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>danceability_scaled</remote-name>
@@ -2137,7 +2099,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>2693</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>energy_scaled</remote-name>
@@ -2151,7 +2112,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3450</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>key_scaled</remote-name>
@@ -2165,7 +2125,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>12</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>loudness_scaled</remote-name>
@@ -2179,7 +2138,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>23969</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>mode_scaled</remote-name>
@@ -2193,7 +2151,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>speechiness_scaled</remote-name>
@@ -2207,7 +2164,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3228</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>acousticness_scaled</remote-name>
@@ -2221,7 +2177,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>8117</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>instrumentalness_scaled</remote-name>
@@ -2235,7 +2190,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>9262</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>liveness_scaled</remote-name>
@@ -2249,7 +2203,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>3361</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>valence_scaled</remote-name>
@@ -2263,7 +2216,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>4249</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>tempo_scaled</remote-name>
@@ -2277,7 +2229,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>36303</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>time_signature_scaled</remote-name>
@@ -2291,7 +2242,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>5</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>duration_min</remote-name>
@@ -2305,7 +2255,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>39887</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>popularity_category</remote-name>
@@ -2320,7 +2269,6 @@
               <approx-count>5</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>mood_score</remote-name>
@@ -2334,7 +2282,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>7154</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>party_score</remote-name>
@@ -2348,7 +2295,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>5309</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_tracks_clean_deduplicated.csv_C6346454B9034470BCBFB1C456E60CE0]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_id</remote-name>
@@ -2363,7 +2309,6 @@
               <approx-count>8376</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>track_name</remote-name>
@@ -2378,7 +2323,6 @@
               <approx-count>4208</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>artist_name</remote-name>
@@ -2393,7 +2337,6 @@
               <approx-count>1907</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_name</remote-name>
@@ -2408,7 +2351,6 @@
               <approx-count>2886</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_id</remote-name>
@@ -2423,7 +2365,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>release_date</remote-name>
@@ -2437,7 +2378,6 @@
               <aggregation>Year</aggregation>
               <approx-count>1662</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>popularity</remote-name>
@@ -2451,7 +2391,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>97</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>duration_ms</remote-name>
@@ -2465,7 +2404,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>4121</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_images</remote-name>
@@ -2480,7 +2418,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>album_image_url</remote-name>
@@ -2495,7 +2432,6 @@
               <approx-count>2920</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>artist_ids</remote-name>
@@ -2510,7 +2446,6 @@
               <approx-count>1907</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>explicit</remote-name>
@@ -2524,7 +2459,6 @@
               <aggregation>Count</aggregation>
               <approx-count>2</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>preview_url</remote-name>
@@ -2539,7 +2473,6 @@
               <approx-count>1</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RGB' />
-              <object-id>[spotify_artwork_batch_9500.csv_96189C90A6FF4786A9629B7505154C0F]</object-id>
             </metadata-record>
           </metadata-records>
         </connection>
@@ -2716,6 +2649,16 @@
       </object-graph>
     </datasource>
   </datasources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1_2599FB8376A04891B1CBBA1E90A0A79E]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Song Selector' type='sheet' worksheet='Album' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Song Selector' />
+      </command>
+    </action>
+  </actions>
   <worksheets>
     <worksheet name='Album'>
       <table>
@@ -2730,7 +2673,7 @@
             <column caption='Track Name (Spotify Tracks Clean Deduplicated.Csv)' datatype='string' name='[track_name (spotify_tracks_clean_deduplicated.csv)]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' filter-group='4'>
-            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;4 da Manhã – Deluxe Edition&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;Peaches &apos;n&apos; Cream&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]</column>
@@ -2740,6 +2683,7 @@
         <style>
           <style-rule element='cell'>
             <format attr='width' value='820' />
+            <format attr='text-align' value='center' />
           </style-rule>
           <style-rule element='header'>
             <format attr='width' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' value='672' />
@@ -2752,7 +2696,7 @@
           <style-rule element='quick-filter'>
             <format attr='title' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' value='Select a song from here:'>
               <formatted-text>
-                <run>Select a song from here:</run>
+                <run fontalignment='1'>Select a song from here:</run>
               </formatted-text>
             </format>
           </style-rule>
@@ -2798,22 +2742,28 @@
             <datasource caption='recommendation.csv+ (Multiple Connections)' name='federated.08tlzqj0cb0xe518qrwwu11jseq3' />
           </datasources>
           <datasource-dependencies datasource='federated.08tlzqj0cb0xe518qrwwu11jseq3'>
+            <column caption='Album Name (Spotify Tracks Clean Deduplicated.Csv)' datatype='string' name='[album_name (spotify_tracks_clean_deduplicated.csv)]' role='dimension' type='nominal' />
             <column caption='Artists' datatype='string' name='[artists]' role='dimension' type='nominal' />
             <column-instance column='[artists]' derivation='None' name='[none:artists:nk]' pivot='key' type='nominal' />
             <column-instance column='[track_name (spotify_tracks_clean_deduplicated.csv)]' derivation='None' name='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' pivot='key' type='nominal' />
             <column caption='Track Name (Spotify Tracks Clean Deduplicated.Csv)' datatype='string' name='[track_name (spotify_tracks_clean_deduplicated.csv)]' role='dimension' type='nominal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))]'>
+            <groupfilter function='member' level='[album_name (spotify_tracks_clean_deduplicated.csv)]' member='&quot;Peaches &apos;n&apos; Cream&quot;' user:ui-action-filter='[Action1_2599FB8376A04891B1CBBA1E90A0A79E]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' filter-group='4'>
-            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;4 da Manhã – Deluxe Edition&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;Peaches &apos;n&apos; Cream&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]</column>
+            <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='cell'>
             <format attr='width' value='820' />
+            <format attr='text-align' value='center' />
           </style-rule>
           <style-rule element='header'>
             <format attr='width' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' value='672' />
@@ -2871,29 +2821,38 @@
           </datasources>
           <datasource-dependencies datasource='federated.08tlzqj0cb0xe518qrwwu11jseq3'>
             <column caption='Album Image Url (Spotify Artwork Batch 9500.Csv2)' datatype='string' name='[album_image_url (spotify_artwork_batch_9500.csv2)]' role='dimension' semantic-role='[URL]' type='nominal' />
+            <column caption='Album Name (Spotify Tracks Clean Deduplicated.Csv)' datatype='string' name='[album_name (spotify_tracks_clean_deduplicated.csv)]' role='dimension' type='nominal' />
             <column-instance column='[match_score]' derivation='Avg' name='[avg:match_score:qk]' pivot='key' type='quantitative' />
             <column caption='Match Score' datatype='real' name='[match_score]' role='measure' type='quantitative' />
             <column-instance column='[album_image_url (spotify_artwork_batch_9500.csv2)]' derivation='None' name='[none:album_image_url (spotify_artwork_batch_9500.csv2):nk]' pivot='key' type='nominal' />
             <column-instance column='[recommendation_type]' derivation='None' name='[none:recommendation_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[recommended_track_artists]' derivation='None' name='[none:recommended_track_artists:nk]' pivot='key' type='nominal' />
             <column-instance column='[recommended_track_name]' derivation='None' name='[none:recommended_track_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[track_artists]' derivation='None' name='[none:track_artists:nk]' pivot='key' type='nominal' />
             <column-instance column='[track_name (spotify_tracks_clean_deduplicated.csv)]' derivation='None' name='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' pivot='key' type='nominal' />
             <column caption='Recommendation Type' datatype='string' name='[recommendation_type]' role='dimension' type='nominal' />
+            <column caption='Recommended Track Artists' datatype='string' name='[recommended_track_artists]' role='dimension' type='nominal' />
             <column caption='Recommended Track Name' datatype='string' name='[recommended_track_name]' role='dimension' type='nominal' />
+            <column caption='Track Artists' datatype='string' name='[track_artists]' role='dimension' type='nominal' />
             <column caption='Track Name (Spotify Tracks Clean Deduplicated.Csv)' datatype='string' name='[track_name (spotify_tracks_clean_deduplicated.csv)]' role='dimension' type='nominal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))]'>
+            <groupfilter function='member' level='[album_name (spotify_tracks_clean_deduplicated.csv)]' member='&quot;Peaches &apos;n&apos; Cream&quot;' user:ui-action-filter='[Action1_2599FB8376A04891B1CBBA1E90A0A79E]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]'>
             <groupfilter function='member' level='[none:recommendation_type:nk]' member='&quot;cross_album&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' filter-group='4'>
-            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;4 da Manhã – Deluxe Edition&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' member='&quot;Peaches &apos;n&apos; Cream&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk]' direction='DESC' measure-to-sort-by='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' shelf='columns' />
-            <shelf-sort-v2 dimension-to-sort='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_image_url (spotify_artwork_batch_9500.csv2):nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' shelf='columns' />
+            <shelf-sort-v2 dimension-to-sort='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk]' direction='DESC' measure-to-sort-by='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' shelf='rows' />
+            <shelf-sort-v2 dimension-to-sort='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_image_url (spotify_artwork_batch_9500.csv2):nk]' direction='DESC' measure-to-sort-by='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' shelf='rows' />
           </shelf-sorts>
           <slices>
             <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]</column>
             <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]</column>
+            <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[Action (Album Name (Spotify Tracks Clean Deduplicated.Csv))]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2902,8 +2861,9 @@
             <format attr='text-format' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' value='p0%' />
           </style-rule>
           <style-rule element='header'>
-            <format attr='width' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk]' value='876' />
-            <format attr='height' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_image_url (spotify_artwork_batch_9500.csv2):nk]' value='100' />
+            <format attr='height-header' value='20' />
+            <format attr='width' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_artists:nk]' value='200' />
+            <format attr='width' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_artists:nk]' value='224' />
           </style-rule>
           <style-rule element='label'>
             <format attr='display' field='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk]' value='true' />
@@ -2918,23 +2878,16 @@
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
-            <encodings>
-              <text column='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]' />
-            </encodings>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='true' />
-              </style-rule>
-              <style-rule element='pane'>
-                <format attr='minheight' value='-1' />
-                <format attr='maxheight' value='-1' />
+                <format attr='mark-labels-show' value='false' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows />
-        <cols>([federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk] / [federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_image_url (spotify_artwork_batch_9500.csv2):nk])</cols>
+        <rows>([federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_name:nk] / ([federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_artists:nk] / ([federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_image_url (spotify_artwork_batch_9500.csv2):nk] / [federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommended_track_artists:nk])))</rows>
+        <cols>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[avg:match_score:qk]</cols>
         <pages>
           <column>[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]</column>
         </pages>
@@ -2979,8 +2932,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='6' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98140' id='5' param='vert' type-v2='layout-flow' w='97538' x='1231' y='930' />
+            <zone h='100000' id='14' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='13' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000' />
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -2993,7 +2946,7 @@
       </devicelayouts>
       <simple-id uuid='{C5F399E7-654C-4256-9749-993255249720}' />
     </dashboard>
-    <dashboard enable-sort-zone-taborder='true' name='With Artwork'>
+    <dashboard enable-sort-zone-taborder='true' name='Song Selector'>
       <style />
       <size sizing-mode='automatic' />
       <datasources>
@@ -3007,9 +2960,9 @@
       </datasource-dependencies>
       <zones>
         <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='54020' id='38' is-fixed='true' type-v2='layout-basic' w='76605' x='539' y='45187'>
-            <zone h='54020' id='4' param='horz' type-v2='layout-flow' w='8153' x='539' y='45187'>
-              <zone h='54020' id='37' type-v2='text' w='8153' x='539' y='45187'>
+          <zone h='48563' id='38' is-fixed='true' type-v2='layout-basic' w='76589' x='539' y='40726'>
+            <zone h='48563' id='4' param='horz' type-v2='layout-flow' w='8132' x='539' y='40726'>
+              <zone h='48563' id='37' type-v2='text' w='8132' x='539' y='40726'>
                 <formatted-text>
                   <run>Recomended Tracks</run>
                 </formatted-text>
@@ -3021,9 +2974,9 @@
                 </zone-style>
               </zone>
             </zone>
-            <zone h='54020' id='39' param='horz' type-v2='layout-flow' w='68452' x='8692' y='45187'>
-              <zone h='54020' id='28' name='Recomendation' show-title='false' w='68452' x='8692' y='45187'>
-                <layout-cache cell-count-w='9' type-h='cell' type-w='cell' />
+            <zone h='48563' id='39' param='horz' type-v2='layout-flow' w='68457' x='8671' y='40726'>
+              <zone h='48563' id='28' name='Recomendation' show-title='false' w='68457' x='8671' y='40726'>
+                <layout-cache minheight='313' minwidth='845' type-h='scalable' type-w='scalable' />
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -3033,24 +2986,8 @@
               </zone>
             </zone>
           </zone>
-          <zone h='78897' id='5' param='vert' type-v2='layout-flow' w='22317' x='77144' y='20310'>
-            <zone h='7235' id='40' mode='dropdown' name='Recomendation' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:album_name (spotify_artwork_batch_9500.csv):nk]' type-v2='filter' values='database' w='22317' x='77144' y='20310'>
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-            <zone fixed-size='50' h='5748' id='41' is-fixed='true' mode='dropdown' name='Recomendation' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:artist_name (spotify_artwork_batch_9500.csv):nk]' type-v2='filter' values='database' w='22317' x='77144' y='27545'>
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-            <zone h='7433' id='43' mode='slider' name='Recomendation' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]' type-v2='filter' values='database' w='22317' x='77144' y='33293'>
+          <zone h='78905' id='5' param='vert' type-v2='layout-flow' w='22333' x='77128' y='20302'>
+            <zone h='7433' id='43' mode='slider' name='Recomendation' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]' type-v2='filter' values='database' w='22333' x='77128' y='20302'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -3059,8 +2996,8 @@
               </zone-style>
             </zone>
           </zone>
-          <zone h='16346' id='33' param='horz' type-v2='layout-flow' w='98922' x='539' y='3964'>
-            <zone forceUpdate='true' h='16346' id='35' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='98922' x='539' y='3964'>
+          <zone h='16343' id='33' param='horz' type-v2='layout-flow' w='98922' x='539' y='3959'>
+            <zone h='16343' id='35' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='98922' x='539' y='3959'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -3069,7 +3006,7 @@
               </zone-style>
             </zone>
           </zone>
-          <zone forceUpdate='true' h='24877' id='34' type-v2='text' w='8153' x='539' y='20310'>
+          <zone forceUpdate='true' h='9133' id='34' type-v2='text' w='8136' x='539' y='20302'>
             <formatted-text>
               <run>Select a Song</run>
             </formatted-text>
@@ -3080,7 +3017,7 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='5954' id='42' mode='dropdown' name='Album' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' type-v2='filter' values='database' w='68452' x='8692' y='20310'>
+          <zone h='5956' id='42' mode='dropdown' name='Album' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' type-v2='filter' values='database' w='68453' x='8675' y='20302'>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
@@ -3088,57 +3025,112 @@
               <format attr='margin' value='4' />
             </zone-style>
           </zone>
-          <zone h='18923' id='44' param='vert' type-v2='layout-flow' w='34226' x='8692' y='26264'>
-            <zone h='2478' id='45' type-v2='text' w='34226' x='8692' y='26264'>
-              <formatted-text>
-                <run>Artist</run>
-              </formatted-text>
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-            <zone h='16445' id='32' name='Album' show-title='false' w='34226' x='8692' y='28742'>
-              <layout-cache cell-count-h='1' type-h='cell' type-w='fixed' />
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-          </zone>
-          <zone h='18923' id='46' param='vert' type-v2='layout-flow' w='34226' x='42918' y='26264'>
-            <zone h='2478' id='47' type-v2='text' w='34226' x='42918' y='26264'>
-              <formatted-text>
-                <run>Album</run>
-              </formatted-text>
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-            <zone h='16445' id='48' name='Artist' show-title='false' w='34226' x='42918' y='28742'>
-              <layout-cache cell-count-h='1' type-h='cell' type-w='fixed' />
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='4' />
-              </zone-style>
-            </zone>
-          </zone>
-          <zone forceUpdate='true' h='3171' id='49' type-v2='text' w='98922' x='539' y='793'>
+          <zone h='3166' id='50' type-v2='dashboard-object' w='49459' x='539' y='793'>
+            <button action='tabdoc:goto-sheet window-id=&quot;{34C4D284-2D53-415D-AC5F-A23F1D3EF2D8}&quot;' button-type='text'>
+              <button-visual-state>
+                <caption>Song Selector</caption>
+                <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                <format attr='background-color' value='#333333' />
+              </button-visual-state>
+            </button>
             <zone-style>
               <format attr='border-color' value='#000000' />
               <format attr='border-style' value='none' />
               <format attr='border-width' value='0' />
               <format attr='margin' value='4' />
             </zone-style>
+          </zone>
+          <zone h='3166' id='52' type-v2='dashboard-object' w='24721' x='49998' y='793'>
+            <button action='' button-type='text'>
+              <button-visual-state>
+                <caption>Artist Selector</caption>
+                <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                <format attr='background-color' value='#333333' />
+              </button-visual-state>
+            </button>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='3166' id='53' type-v2='dashboard-object' w='24742' x='74719' y='793'>
+            <button action='' button-type='text'>
+              <button-visual-state>
+                <caption>Album Selector</caption>
+                <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                <format attr='background-color' value='#333333' />
+              </button-visual-state>
+            </button>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='3177' id='54' param='horz' type-v2='layout-flow' w='34227' x='8675' y='26258'>
+            <zone fixed-size='106' forceUpdate='true' h='3177' id='45' is-fixed='true' type-v2='text' w='7687' x='8675' y='26258'>
+              <formatted-text>
+                <run bold='true' fontalignment='1'>Artist:</run>
+              </formatted-text>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='dotted' />
+                <format attr='border-width' value='1' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='3177' id='32' name='Album' show-title='false' w='26540' x='16362' y='26258'>
+              <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone forceUpdate='true' h='3177' id='47' type-v2='text' w='8191' x='42902' y='26258'>
+            <formatted-text>
+              <run bold='true' fontalignment='1'>Album:</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='dotted' />
+              <format attr='border-width' value='1' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='3177' id='48' name='Artist' show-title='false' w='26035' x='51093' y='26258'>
+            <layout-cache cell-count-h='1' type-h='cell' type-w='fixed' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='11291' id='55' param='horz' type-v2='layout-flow' w='76589' x='539' y='29435'>
+            <zone h='11291' id='56' is-centered='0' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='76589' x='539' y='29435'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='9918' id='57' param='horz' type-v2='layout-flow' w='76589' x='539' y='89289'>
+            <zone h='9918' id='58' is-centered='0' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='76589' x='539' y='89289'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
           </zone>
           <zone-style>
             <format attr='border-color' value='#000000' />
@@ -3172,7 +3164,7 @@
                 </zone-style>
               </zone>
               <zone h='19528' id='33' param='horz' type-v2='layout-flow' w='98750' x='625' y='781'>
-                <zone forceUpdate='true' h='19528' id='35' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='98750' x='625' y='781'>
+                <zone h='19528' id='35' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='98750' x='625' y='781'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -3202,10 +3194,182 @@
           </zones>
         </devicelayout>
         <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <size maxheight='1800' minheight='1800' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97714' id='25' param='vert' type-v2='layout-flow' w='95734' x='2133' y='1143' />
+            <zone h='100000' id='66' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98414' id='65' param='vert' type-v2='layout-flow' w='98922' x='539' y='793'>
+                <zone h='3166' id='50' type-v2='dashboard-object' w='49459' x='539' y='793'>
+                  <button action='tabdoc:goto-sheet window-id=&quot;{34C4D284-2D53-415D-AC5F-A23F1D3EF2D8}&quot;' button-type='text'>
+                    <button-visual-state>
+                      <caption>Song Selector</caption>
+                      <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                      <format attr='background-color' value='#333333' />
+                    </button-visual-state>
+                  </button>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3166' id='52' type-v2='dashboard-object' w='24721' x='49998' y='793'>
+                  <button action='' button-type='text'>
+                    <button-visual-state>
+                      <caption>Artist Selector</caption>
+                      <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                      <format attr='background-color' value='#333333' />
+                    </button-visual-state>
+                  </button>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='3166' id='53' type-v2='dashboard-object' w='24742' x='74719' y='793'>
+                  <button action='' button-type='text'>
+                    <button-visual-state>
+                      <caption>Album Selector</caption>
+                      <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' fontsize='12' />
+                      <format attr='background-color' value='#333333' />
+                    </button-visual-state>
+                  </button>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='122' h='16343' id='35' is-fixed='true' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='98922' x='539' y='3959'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='9133' id='34' type-v2='text' w='8136' x='539' y='20302'>
+                  <formatted-text>
+                    <run>Select a Song</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='106' forceUpdate='true' h='3177' id='45' type-v2='text' w='7687' x='8675' y='26258'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1'>Artist:</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='dotted' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5956' id='42' mode='dropdown' name='Album' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:track_name (spotify_tracks_clean_deduplicated.csv):nk]' type-v2='filter' values='database' w='68453' x='8675' y='20302'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='3177' id='32' is-fixed='true' name='Album' show-title='false' w='26540' x='16362' y='26258'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='3177' id='47' type-v2='text' w='8191' x='42902' y='26258'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1'>Album:</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='dotted' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='3177' id='48' is-fixed='true' name='Artist' show-title='false' w='26035' x='51093' y='26258'>
+                  <layout-cache cell-count-h='1' type-h='cell' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='83' h='11291' id='56' is-centered='0' is-fixed='true' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='76589' x='539' y='29435'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='48563' id='37' type-v2='text' w='8132' x='539' y='40726'>
+                  <formatted-text>
+                    <run>Recomended Tracks</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7433' id='43' mode='slider' name='Recomendation' param='[federated.08tlzqj0cb0xe518qrwwu11jseq3].[none:recommendation_type:nk]' type-v2='filter' values='database' w='22333' x='77128' y='20302'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='48563' id='28' is-fixed='true' name='Recomendation' show-title='false' w='68457' x='8671' y='40726'>
+                  <layout-cache minheight='313' minwidth='845' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='72' h='9918' id='58' is-centered='0' is-fixed='true' param='/Users/julianelliott/Downloads/image.png' type-v2='bitmap' w='76589' x='539' y='89289'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -3295,7 +3459,7 @@
       </cards>
       <simple-id uuid='{908B1B74-24D6-4982-90E6-0DFAF52390AA}' />
     </window>
-    <window class='dashboard' maximized='true' name='With Artwork'>
+    <window class='dashboard' maximized='true' name='Song Selector'>
       <viewpoints>
         <viewpoint name='Album'>
           <zoom type='entire-view' />
@@ -3307,7 +3471,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='49' />
+      <active id='32' />
       <device-preview>
         <device is-portrait='false' name='Medium Desktop Monitor' type='Desktop' />
       </device-preview>

@@ -39,8 +39,6 @@ The Spotify Tracks Dataset contains the following key columns for each track:
 
 This rich set of features enables detailed analysis of musical characteristics and user preferences for recommendation purposes.
 
-
-
 ## Business Requirements
 
 The primary business requirements for this project are:
@@ -60,6 +58,52 @@ The primary business requirements for this project are:
 5. **Transparency and Interpretability:**  
   Provide clear explanations of how recommendations are generated, helping users and stakeholders understand the reasoning behind suggested tracks.
 
+
+## Key Findings from Data Analysis
+
+Our comprehensive exploratory data analysis revealed several critical insights that directly inform our recommendation system design:
+
+### **Data Quality Excellence**
+- **Perfect Completeness:** 100% data completeness across all 89,741 tracks with zero missing values
+- **High Data Integrity:** Minimal duplicate records ensuring clean foundation for recommendations
+- **Comprehensive Coverage:** 11+ detailed audio features providing rich characteristic profiles
+
+### 🎵 **Audio Feature Insights**
+Based on our analysis visualisations:
+
+**Distribution Patterns** (`numerical_features_distribution.png`):
+- Several features show non-normal distributions requiring preprocessing
+- Tempo and popularity features exhibit significant outliers
+- Valence and danceability show more uniform distributions suitable for similarity calculations
+
+**Feature Correlations** (`audio_features_correlation_matrix.png`):
+- **Strong positive correlation** between energy and loudness (r > 0.5)
+- **Moderate correlation** between valence and danceability
+- **Independence** of acousticness and energy features, providing diverse recommendation dimensions
+
+**Feature Quality** (`audio_features_box_plots.png`):
+- Systematic outlier detection across all audio characteristics
+- Well-defined quartile ranges for most features
+- Clear statistical boundaries for similarity thresholds
+
+### 🎼 **Genre Distribution Analysis**
+Our complete treemap visualisation (`genre_distribution_complete_treemap.png`) reveals:
+- **Excellent Genre Balance:** Near-perfect distribution across all music genres
+- **Comprehensive Coverage:** All genres represented with unique visual identification
+- **Single Exception:** K-pop shows higher representation (999 tracks) but doesn't compromise overall balance
+- **Recommendation Diversity:** Strong foundation for cross-genre music discovery
+
+### 📈 **Statistical Validation**
+- **Skewness Analysis:** Identified features requiring transformation for optimal model performance
+- **Bias Assessment:** Low Gini coefficient indicates equitable genre representation
+- **Preprocessing Validation:** Standard scaling confirmed as optimal approach for computational efficiency
+
+### 🔍 **Implications for Recommendation System**
+These findings directly support our business requirements:
+1. **Robust Data Foundation:** High-quality, complete dataset enables reliable recommendations
+2. **Feature Diversity:** Multiple uncorrelated audio dimensions provide rich similarity calculations
+3. **Genre Fairness:** Balanced representation ensures diverse music discovery
+4. **Scalable Architecture:** Clean data structure supports efficient similarity computations
 
 ## Hypothesis and how to validate?
 * We formulated and tested several hypotheses to guide our recommendation approach:
@@ -95,15 +139,59 @@ The high-level steps taken for the analysis are as follows:
 6. **Dashboarding:** Present the results and insights through an interactive dashboard for stakeholders and users.
 
 ## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+
+### 1. Personalised Song Recommendations
+**Data Visualisation:** Audio Features Correlation Matrix (`audio_features_correlation_matrix.png`)
+- **Rationale:** Understanding correlations between audio features helps identify which characteristics cluster together, enabling more accurate similarity-based recommendations.
+- **Key Finding:** Strong correlations identified between energy-loudness and valence-danceability, informing our feature weighting strategy.
+
+### 2. Support for Music Discovery  
+**Data Visualisation:** Complete Genre Distribution Treemap (`genre_distribution_complete_treemap.png`)
+- **Rationale:** Visualising genre distribution ensures our recommendation system can suggest diverse music across all available genres, not just popular ones.
+- **Key Finding:** Nearly perfect genre balance discovered (except K-pop with 999 tracks), supporting effective cross-genre recommendations.
+
+### 3. Data-Driven Insights
+**Data Visualisations:** 
+- Numerical Features Distribution (`numerical_features_distribution.png`)
+- Audio Features Box Plots (`audio_features_box_plots.png`)
+- **Rationale:** Distribution analysis reveals data quality, skewness patterns, and outliers that impact recommendation algorithms.
+- **Key Findings:** Several highly skewed features identified requiring log transformation; outlier patterns detected in tempo and popularity metrics.
+
+### 4. Scalability and Efficiency
+**Data Visualisation:** Standardisation Comparison (`standardisation_comparison.png`)
+- **Rationale:** Comparing preprocessing techniques ensures optimal data preparation for efficient similarity calculations at scale.
+- **Key Finding:** Standard scaling chosen for computational efficiency while maintaining recommendation accuracy.
+
+### 5. Transparency and Interpretability
+**Data Visualisation:** Audio Features Distribution (`audio_features_distribution.png`)
+- **Rationale:** Clear visualisation of feature ranges and distributions helps explain to users why certain songs are recommended.
+- **Key Finding:** Audio features show interpretable patterns that can be communicated to end users for recommendation explanations.
 
 ## Analysis techniques used
 
 * **Data Cleaning:**  
   Before analysis, we cleaned the dataset by removing duplicate tracks, handling missing values, and ensuring that all audio feature columns contained valid numerical data. We also standardised column names and filtered out any records with incomplete or inconsistent information. This step was essential to ensure the accuracy and reliability of our analysis and recommendations.
+  
+  **Key Results:** Achieved 100% data completeness with zero missing values across 89,741 tracks, as visualised in our comprehensive data quality analysis.
+
+* **Exploratory Data Analysis:**  
+  We conducted extensive visualisation and statistical analysis to understand our dataset characteristics:
+  
+  - **Distribution Analysis** (`numerical_features_distribution.png`): Revealed skewness patterns across audio features, with several features requiring transformation for optimal model performance.
+  - **Correlation Analysis** (`audio_features_correlation_matrix.png`): Identified significant correlations between energy-loudness (r > 0.5) and moderate correlations between valence-danceability, informing our feature selection strategy.
+  - **Genre Distribution** (`genre_distribution_complete_treemap.png`): Discovered near-perfect genre balance across all categories, with unique colour coding for each of the genres represented, ensuring comprehensive music discovery capabilities.
+  - **Outlier Detection** (`audio_features_box_plots.png`): Systematically identified outliers in tempo, popularity, and duration features, with detailed quartile analysis for each audio characteristic.
 
 * **Feature Engineering:**  
   We created new features and transformed existing ones to improve the performance of our recommendation system. This included combining or modifying audio features, encoding categorical variables, and selecting the most relevant features for analysis. Feature engineering helped us better capture the characteristics of songs and user preferences.
+  
+  **Preprocessing Results** (`standardisation_comparison.png`): Implemented standard scaling for computational efficiency while maintaining recommendation accuracy across all audio features.
+
+* **Statistical Analysis:**
+  - **Skewness Assessment:** Identified highly skewed features (|skew| > 2) requiring log transformation
+  - **Correlation Testing:** Validated feature relationships using significance testing
+  - **Distribution Quality:** Assessed normality and identified optimal preprocessing strategies
+  - **Bias Detection:** Implemented Gini coefficient analysis for genre inequality measurement
 
 * The method we use to prepare the data (called "standard scaling") does not handle unusual values or imbalances in the data. This means that songs that are very different from most others could affect our results. For this project, we decided not to address this issue, as it is outside the scope of our first version. However, looking into this in the future could help us make even more accurate music recommendations.
 
@@ -136,22 +224,78 @@ The high-level steps taken for the analysis are as follows:
 * What new skills or tools do you plan to learn next based on your project experience? 
 
 ## Deployment
-### Heroku
+### Tableau Public
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+* The live dashboard is available at: https://public.tableau.com/app/profile/julian.elliott/viz/song-recommendation-dashboard/SongSelector
+* The project was deployed to Tableau Public using the following steps:
 
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+1. **Data Preparation:** Export the processed datasets from our Python analysis pipeline as CSV files for Tableau consumption
+2. **Dashboard Development:** Create interactive visualizations in Tableau Desktop using the recommendation data
+3. **Tableau Public Upload:** 
+   - Log in to Tableau Public
+   - Upload the Tableau workbook (.twb) file containing all visualizations and data connections
+   - Configure public access and sharing settings
+4. **Interactive Features:** The dashboard includes:
+   - Song selector interface for exploring recommendations
+   - Interactive filters for genre, popularity, and audio features
+   - Dynamic visualizations showing recommendation relationships
+   - Album artwork integration via Spotify URLs
+5. **Data Updates:** The dashboard can be refreshed by re-uploading updated CSV files from our recommendation pipeline
 
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+
+The following libraries were essential for our comprehensive analysis and visualization generation:
+
+### **Core Data Analysis:**
+* **pandas (2.3.1):** Used for data manipulation, cleaning, and statistical analysis of our 89,741 track dataset
+  ```python
+  df = pd.read_csv("spotify_tracks.csv")
+  genre_counts = df['genre'].value_counts()
+  ```
+
+* **numpy (2.3.2):** Provided numerical computing capabilities for statistical calculations and array operations
+  ```python
+  # Skewness calculations and correlation analysis
+  skew_val = stats.skew(df[col].dropna())
+  ```
+
+### **Statistical Analysis:**
+* **scipy (1.16.1):** Used for advanced statistical testing and skewness analysis
+  ```python
+  from scipy import stats
+  # Distribution analysis for each numerical feature
+  ```
+
+### **Visualization Libraries:**
+* **matplotlib (3.10.5):** Created foundational plots and figure management for all our analysis charts
+  ```python
+  # Generated: numerical_features_distribution.png, audio_features_box_plots.png
+  plt.figure(figsize=(24, 16))
+  ```
+
+* **seaborn (0.13.2):** Produced statistical visualizations including correlation heatmaps
+  ```python
+  # Generated: audio_features_correlation_matrix.png
+  sns.heatmap(corr_matrix, annot=True, cmap='RdBu_r')
+  ```
+
+* **squarify (0.4.4):** Created our comprehensive genre distribution treemap with unique colors for each genre
+  ```python
+  # Generated: genre_distribution_complete_treemap.png
+  squarify.plot(sizes=genre_counts.values, labels=labels, color=colors)
+  ```
+
+### **Generated Visualizations:**
+Our analysis produced six key visualization files saved in `/results/`:
+1. `numerical_features_distribution.png` - Distribution analysis of all audio features
+2. `audio_features_correlation_matrix.png` - Feature correlation heatmap
+3. `genre_distribution_complete_treemap.png` - Comprehensive genre representation
+4. `audio_features_box_plots.png` - Outlier detection and quartile analysis
+5. `audio_features_distribution.png` - Individual feature distribution patterns
+6. `standardisation_comparison.png` - Preprocessing technique validation
+
+Each visualization directly supports our recommendation system development and validates key assumptions about the dataset characteristics.
 
 
 ## Credits 
@@ -164,14 +308,7 @@ The high-level steps taken for the analysis are as follows:
 
 - Team Members: Julian, Nassra, Sumaya 
 
-
-
 ### Media
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
-
-
-
-## Acknowledgements (optional)
-* Thank the people who provided support through this project.
+- The background image of on our tableau dashboard was generated with the multimodal chatGPT-5 image generator.
+- The album artwork present on our dashboard uses spotifys album artwork hosted at their urls which is free to use with attribution of their logo which is present in our README and presentation.

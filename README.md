@@ -68,7 +68,7 @@ Our comprehensive exploratory data analysis revealed several critical insights t
 - **High Data Integrity:** Minimal duplicate records ensuring clean foundation for recommendations
 - **Comprehensive Coverage:** 11+ detailed audio features providing rich characteristic profiles
 
-### 🎵 **Audio Feature Insights**
+### **Audio Feature Insights**
 Based on our analysis visualisations:
 
 **Distribution Patterns** (`numerical_features_distribution.png`):
@@ -86,19 +86,19 @@ Based on our analysis visualisations:
 - Well-defined quartile ranges for most features
 - Clear statistical boundaries for similarity thresholds
 
-### 🎼 **Genre Distribution Analysis**
+### **Genre Distribution Analysis**
 Our complete treemap visualisation (`genre_distribution_complete_treemap.png`) reveals:
 - **Excellent Genre Balance:** Near-perfect distribution across all music genres
 - **Comprehensive Coverage:** All genres represented with unique visual identification
 - **Single Exception:** K-pop shows higher representation (999 tracks) but doesn't compromise overall balance
 - **Recommendation Diversity:** Strong foundation for cross-genre music discovery
 
-### 📈 **Statistical Validation**
+### **Statistical Validation**
 - **Skewness Analysis:** Identified features requiring transformation for optimal model performance
 - **Bias Assessment:** Low Gini coefficient indicates equitable genre representation
 - **Preprocessing Validation:** Standard scaling confirmed as optimal approach for computational efficiency
 
-### 🔍 **Implications for Recommendation System**
+### **Implications for Recommendation System**
 These findings directly support our business requirements:
 1. **Robust Data Foundation:** High-quality, complete dataset enables reliable recommendations
 2. **Feature Diversity:** Multiple uncorrelated audio dimensions provide rich similarity calculations
@@ -230,22 +230,22 @@ The high-level steps taken for the analysis are as follows:
 * The project was deployed to Tableau Public using the following steps:
 
 1. **Data Preparation:** Export the processed datasets from our Python analysis pipeline as CSV files for Tableau consumption
-2. **Dashboard Development:** Create interactive visualizations in Tableau Desktop using the recommendation data
+2. **Dashboard Development:** Create interactive visualisations in Tableau Desktop using the recommendation data
 3. **Tableau Public Upload:** 
    - Log in to Tableau Public
-   - Upload the Tableau workbook (.twb) file containing all visualizations and data connections
+   - Upload the Tableau workbook (.twb) file containing all visualisations and data connections
    - Configure public access and sharing settings
 4. **Interactive Features:** The dashboard includes:
    - Song selector interface for exploring recommendations
    - Interactive filters for genre, popularity, and audio features
-   - Dynamic visualizations showing recommendation relationships
+   - Dynamic visualisations showing recommendation relationships
    - Album artwork integration via Spotify URLs
 5. **Data Updates:** The dashboard can be refreshed by re-uploading updated CSV files from our recommendation pipeline
 
 
 ## Main Data Analysis Libraries
 
-The following libraries were essential for our comprehensive analysis and visualization generation:
+The following libraries were essential for our comprehensive analysis and visualisation generation:
 
 ### **Core Data Analysis:**
 * **pandas (2.3.1):** Used for data manipulation, cleaning, and statistical analysis of our 89,741 track dataset
@@ -267,27 +267,27 @@ The following libraries were essential for our comprehensive analysis and visual
   # Distribution analysis for each numerical feature
   ```
 
-### **Visualization Libraries:**
+### **Visualisation Libraries:**
 * **matplotlib (3.10.5):** Created foundational plots and figure management for all our analysis charts
   ```python
   # Generated: numerical_features_distribution.png, audio_features_box_plots.png
   plt.figure(figsize=(24, 16))
   ```
 
-* **seaborn (0.13.2):** Produced statistical visualizations including correlation heatmaps
+* **seaborn (0.13.2):** Produced statistical visualisations including correlation heatmaps
   ```python
   # Generated: audio_features_correlation_matrix.png
   sns.heatmap(corr_matrix, annot=True, cmap='RdBu_r')
   ```
 
-* **squarify (0.4.4):** Created our comprehensive genre distribution treemap with unique colors for each genre
+* **squarify (0.4.4):** Created our comprehensive genre distribution treemap with unique colours for each genre
   ```python
   # Generated: genre_distribution_complete_treemap.png
   squarify.plot(sizes=genre_counts.values, labels=labels, color=colors)
   ```
 
-### **Generated Visualizations:**
-Our analysis produced six key visualization files saved in `/results/`:
+### **Generated Visualisations:**
+Our analysis produced six key visualisation files saved in `/results/`:
 1. `numerical_features_distribution.png` - Distribution analysis of all audio features
 2. `audio_features_correlation_matrix.png` - Feature correlation heatmap
 3. `genre_distribution_complete_treemap.png` - Comprehensive genre representation
@@ -295,7 +295,7 @@ Our analysis produced six key visualization files saved in `/results/`:
 5. `audio_features_distribution.png` - Individual feature distribution patterns
 6. `standardisation_comparison.png` - Preprocessing technique validation
 
-Each visualization directly supports our recommendation system development and validates key assumptions about the dataset characteristics.
+Each visualisation directly supports our recommendation system development and validates key assumptions about the dataset characteristics.
 
 
 ## Credits 
@@ -310,5 +310,5 @@ Each visualization directly supports our recommendation system development and v
 
 ### Media
 
-- The background image of on our tableau dashboard was generated with the multimodal chatGPT-5 image generator.
-- The album artwork present on our dashboard uses spotifys album artwork hosted at their urls which is free to use with attribution of their logo which is present in our README and presentation.
+- The background image on our Tableau dashboard was generated with the multimodal ChatGPT-5 image generator.
+- The album artwork present on our dashboard uses Spotify's album artwork hosted at their URLs, which is free to use with attribution of their logo, which is present in our README and presentation.

@@ -105,7 +105,7 @@ These findings directly support our business requirements:
 3. **Genre Fairness:** Balanced representation ensures diverse music discovery
 4. **Scalable Architecture:** Clean data structure supports efficient similarity computations
 
-## Hypothesis and how to validate?
+## Hypothesis and How to Validate
 * We formulated and tested several hypotheses to guide our recommendation approach:
   - **Genre-Based Audio Feature Differences:**  
     Do audio features differ significantly between genres?  
@@ -117,7 +117,7 @@ These findings directly support our business requirements:
     Are there significant correlations between audio features?  
     *Tested using correlation matrices and significance testing.*
 
-## Why we did our Hypotheses
+## Why We Conducted Our Hypotheses
 
 We developed and tested several hypotheses to ensure our recommendation system is based on sound assumptions and real-world patterns. By validating these hypotheses, we aimed to:
 - Understand how audio features differ across genres and popularity levels
@@ -138,7 +138,7 @@ The high-level steps taken for the analysis are as follows:
 5. **Model Development:** Build and evaluate a nearest neighbour recommendation model.
 6. **Dashboarding:** Present the results and insights through an interactive dashboard for stakeholders and users.
 
-## The rationale to map the business requirements to the Data Visualisations
+## The Rationale to Map the Business Requirements to the Data Visualisations
 
 ### 1. Personalised Song Recommendations
 **Data Visualisation:** Audio Features Correlation Matrix (`audio_features_correlation_matrix.png`)
@@ -167,7 +167,7 @@ The high-level steps taken for the analysis are as follows:
 - **Rationale:** Clear visualisation of feature ranges and distributions helps explain to users why certain songs are recommended.
 - **Key Finding:** Audio features show interpretable patterns that can be communicated to end users for recommendation explanations.
 
-## Analysis techniques used
+## Analysis Techniques Used
 
 * **Data Cleaning:**  
   Before analysis, we cleaned the dataset by removing duplicate tracks, handling missing values, and ensuring that all audio feature columns contained valid numerical data. We also standardised column names and filtered out any records with incomplete or inconsistent information. This step was essential to ensure the accuracy and reliability of our analysis and recommendations.
@@ -197,7 +197,7 @@ The high-level steps taken for the analysis are as follows:
 
 
 
-## Ethical considerations
+## Ethical Considerations
 
 - The Spotify Tracks Dataset may include explicit content or tracks by controversial/cancelled artists. Care must be taken to avoid recommending such songs to minors or sensitive users. Implementing content filters or explicit content warnings is strongly advised.
 - Data privacy is not a direct concern as the dataset contains no personal user information, but ethical use of the data and respect for copyright and licensing should be maintained.
@@ -208,20 +208,9 @@ The high-level steps taken for the analysis are as follows:
 > 
 > The Spotify Tracks Dataset may contain explicit songs or tracks by artists who have been cancelled or are considered controversial. Care should be taken when recommending such songs, especially as minors or sensitive users could use this analysis or any resulting dashboard. It is important to consider filtering or flagging explicit or potentially inappropriate content in any recommendation system built from this dataset.
 
-## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+## Dashboard Design, Unfixed Bugs and Development Roadmap
 
-## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
-
-## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+For detailed information about our dashboard design, unfixed bugs, and development roadmap, please see our [project presentation](https://docs.google.com/presentation/d/1MSNMIqWUg0dlJ7L2Hj1Mg37MCh7IupxjQWseHKbTACQ/edit?usp=sharing).
 
 ## Deployment
 ### Tableau Public

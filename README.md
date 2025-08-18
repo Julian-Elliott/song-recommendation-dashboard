@@ -15,11 +15,50 @@ By leveraging these features and machine learning techniques, this project aims 
 
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+
+The Spotify Tracks Dataset contains the following key columns for each track:
+
+- **track_id**: Unique identifier for each track
+- **track_name**: Name of the song
+- **artists**: Name(s) of the artist(s)
+- **album_name**: Name of the album
+- **popularity**: Popularity score assigned by Spotify
+- **release_date**: Date the track was released
+- **danceability**: How suitable a track is for dancing (0.0–1.0)
+- **energy**: Intensity and activity of the track (0.0–1.0)
+- **loudness**: Overall loudness in decibels
+- **speechiness**: Presence of spoken words (0.0–1.0)
+- **acousticness**: Confidence measure of whether the track is acoustic (0.0–1.0)
+- **instrumentalness**: Predicts if a track contains no vocals (0.0–1.0)
+- **liveness**: Presence of a live audience (0.0–1.0)
+- **valence**: Musical positiveness (0.0–1.0)
+- **tempo**: Estimated tempo in beats per minute (BPM)
+- **duration_ms**: Duration of the track in milliseconds
+- **genre**: Genre(s) associated with the track
+- **playlist_name**: Name of the playlist the track appears in (if available)
+
+This rich set of features enables detailed analysis of musical characteristics and user preferences for recommendation purposes.
+
 
 
 ## Business Requirements
-* Describe your business requirements
+
+The primary business requirements for this project are:
+
+1. **Personalised Song Recommendations:**  
+  Provide users with accurate and relevant song recommendations based on their musical preferences and listening history, enhancing user engagement and satisfaction.
+
+2. **Support for Music Discovery:**  
+  Enable users to discover new tracks and artists that match their tastes, encouraging exploration beyond their usual listening habits.
+
+3. **Data-Driven Insights:**  
+  Offer insights into the factors that influence song popularity and user preferences, supporting decision-making for playlist curation and marketing strategies.
+
+4. **Scalability and Efficiency:**  
+  Ensure that the recommendation system can efficiently handle large volumes of tracks and user data, allowing for future growth and integration with other music platforms.
+
+5. **Transparency and Interpretability:**  
+  Provide clear explanations of how recommendations are generated, helping users and stakeholders understand the reasoning behind suggested tracks.
 
 
 ## Hypothesis and how to validate?
@@ -34,11 +73,26 @@ By leveraging these features and machine learning techniques, this project aims 
     Are there significant correlations between audio features?  
     *Tested using correlation matrices and significance testing.*
 
+## Why we did our Hypotheses
+
+We developed and tested several hypotheses to ensure our recommendation system is based on sound assumptions and real-world patterns. By validating these hypotheses, we aimed to:
+- Understand how audio features differ across genres and popularity levels
+- Identify which features are most important for recommendations
+- Ensure that our model reflects actual user preferences and behaviours
+- Provide a transparent and data-driven foundation for our recommendation approach
+
+This process helps us build a more effective and trustworthy system for music discovery and personalisation.
 
 ## Project Plan
-* Outline the high-level steps taken for the analysis.
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
+
+The high-level steps taken for the analysis are as follows:
+
+1. **Data Cleaning:** Remove duplicates, handle missing values, and ensure all audio feature columns contain valid data.
+2. **Feature Engineering:** Create new features and transform existing ones to better capture song characteristics and user preferences.
+3. **Exploratory Data Analysis:** Visualise and summarise the dataset to understand distributions and relationships.
+4. **Hypothesis Testing:** Formulate and test hypotheses to validate assumptions about music preferences and recommendation strategies.
+5. **Model Development:** Build and evaluate a nearest neighbour recommendation model.
+6. **Dashboarding:** Present the results and insights through an interactive dashboard for stakeholders and users.
 
 ## The rationale to map the business requirements to the Data Visualisations
 * List your business requirements and a rationale to map them to the Data Visualisations
@@ -102,14 +156,15 @@ By leveraging these features and machine learning techniques, this project aims 
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+- GitHub Copilot: Supported with code guidance, code errors, data exploration ideas, markdown writing, and troubleshooting
 
-### Content 
+- Kaggle: For providing the music streaming and recommendation system dataset
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- Code Institute: For the project structure and teamwork framework
+
+- Team Members: Julian, Nassra, Sumaya 
+
+
 
 ### Media
 

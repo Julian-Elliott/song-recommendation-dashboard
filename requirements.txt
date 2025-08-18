@@ -20,6 +20,7 @@ squarify>=0.4.3
 
 # Development and utilities
 ipywidgets>=8.0.0
+tqdm>=4.65.0
 
 # For Spotify API integration and image handling
 requests>=2.31.0

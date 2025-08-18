@@ -2,11 +2,14 @@
 pandas>=2.0.0
 numpy>=1.24.0
 
+# Scientific computing and statistics
+scipy>=1.10.0
+
 # Jupyter notebook support
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
-# Additional useful packages for data analysis
+# Visualization packages
 matplotlib>=3.5.0
 seaborn>=0.11.0
 plotly>=5.0.0
@@ -19,3 +22,6 @@ ipywidgets>=8.0.0
 requests>=2.31.0
 pillow>=9.0.0
 python-dotenv>=1.0.0
+
+# Standard library typing extensions (for better type hints)
+typing-extensions>=4.0.0
